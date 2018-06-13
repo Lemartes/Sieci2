@@ -15,7 +15,7 @@ public class LibraryDemo {
     private static final String idReqMSG = "Enter book id:";
 
     public static void main(String[] args) {
-        BookDao bookDao = new BookDao();
+        BookDAO bookDAO = new BookDAO();
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
         while (run) {
@@ -30,11 +30,11 @@ public class LibraryDemo {
                     book.setAuthor(scanner.nextLine());
                     System.out.println(isbnReqMSG);
                     book.setIsbn(scanner.nextLine());
-                    bookDao.addBook(book);
+                    bookDAO.addBook(book);
                     System.out.println("Book added");
                     break;
                 case 2:
-                    List<Book> books = bookDao.getAllBooks();
+                    List<Book> books = bookDAO.getAllBooks();
                     if(!books.isEmpty()) {
                         System.out.println("Books:");
                         books.forEach(e -> System.out.println(e.toString()));
@@ -45,7 +45,7 @@ public class LibraryDemo {
                 case 3:
                     scanner.nextLine();
                     System.out.println(idReqMSG);
-                    bookDao.deleteBook(scanner.nextLong());
+                    bookDAO.deleteBook(scanner.nextLong());
                     break;
                 case 4:
                     Book bookUpdated = new Book();
@@ -53,7 +53,7 @@ public class LibraryDemo {
                     System.out.println(idReqMSG);
                     long id = scanner.nextLong();
                     scanner.nextLine();
-                    if(bookDao.getBookById(id) != null) {
+                    if(bookDAO.getBookById(id) != null) {
                         bookUpdated.setId(id);
                         System.out.println(titleReqMSG);
                         bookUpdated.setTitle(scanner.nextLine());
@@ -61,14 +61,14 @@ public class LibraryDemo {
                         bookUpdated.setAuthor(scanner.nextLine());
                         System.out.println(isbnReqMSG);
                         bookUpdated.setIsbn(scanner.nextLine());
-                        bookDao.updateBook(bookUpdated);
+                        bookDAO.updateBook(bookUpdated);
                         System.out.println("Book updated");
                     }else {
                         System.out.println("Book doesnt exist");
                     }
                     break;
                 case 5:
-                    bookDao.close();
+                    bookDAO.close();
                     run = false;
                     break;
             }

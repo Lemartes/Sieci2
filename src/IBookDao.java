@@ -1,6 +1,6 @@
 import java.util.List;
 
-public interface IBookDao {
+public interface IBookDAO {
     void addBook(Book book);
     void deleteBook(long id);
     void updateBook(Book book);
