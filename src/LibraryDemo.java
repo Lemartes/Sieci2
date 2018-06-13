@@ -64,7 +64,7 @@ public class LibraryDemo {
                         bookDAO.updateBook(bookUpdated);
                         System.out.println("Book updated");
                     }else {
-                        System.out.println("Book doesnt exist");
+                        System.out.println("Book doesn't exist");
                     }
                     break;
                 case 5:

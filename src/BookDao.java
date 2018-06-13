@@ -2,7 +2,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDAO implements IBookDAO {
+public class BookDAO {
     private static final String URL = "jdbc:mysql://localhost:3306/library?useSSL=false";
     private static final String USER = "root";
     private static final String PASS = "admin";
@@ -26,8 +26,6 @@ public class BookDAO implements IBookDAO {
             e.printStackTrace();
         }
     }
-
-    @Override
     public void addBook(Book book) {
         final String query = "insert into books(title, author, isbn) values(?, ?, ?)";
         try {
@@ -42,7 +40,6 @@ public class BookDAO implements IBookDAO {
         }
     }
 
-    @Override
     public void deleteBook(long id) {
         final String query = "delete from books where id = ?";
         try {
@@ -54,7 +51,6 @@ public class BookDAO implements IBookDAO {
         }
     }
 
-    @Override
     public void updateBook(Book book) {
         final String query = "update books set title = ?, author = ?, isbn = ? where id = ?";
         try {
@@ -69,7 +65,6 @@ public class BookDAO implements IBookDAO {
         }
     }
 
-    @Override
     public Book getBookByIsbn(String isbn) {
         final String query = "select id, title, author, isbn from books where isbn = ?";
         try {
@@ -84,7 +79,6 @@ public class BookDAO implements IBookDAO {
         return null;
     }
 
-    @Override
     public Book getBookById(Long id) {
         final String query = "select id, title, author, isbn from books where id = ?";
         try {
@@ -112,7 +106,6 @@ public class BookDAO implements IBookDAO {
         return null;
     }
 
-    @Override
     public List<Book> getAllBooks() {
         final String query = "select * from books";
         try {
