@@ -2,7 +2,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDAOI implements IBookDAO {
+public class BookDAO implements IBookDAO {
     private static final String URL = "jdbc:mysql://localhost:3306/library?useSSL=false";
     private static final String USER = "root";
     private static final String PASS = "admin";
