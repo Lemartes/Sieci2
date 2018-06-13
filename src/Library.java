@@ -1,18 +1,18 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class LibraryDemo {
+public class Library {
     private static final String menuMSG =
-            "Choose operation: \n" +
-            "1 - Add \n" +
-            "2 - Show all \n" +
-            "3 - Delete \n" +
-            "4 - Update \n"+
-            "5 - Exit";
-    private static final String titleReqMSG = "Enter a title:";
-    private static final String authorReqMSG = "Enter a author:";
-    private static final String isbnReqMSG = "Enter ISBN number:";
-    private static final String idReqMSG = "Enter book id:";
+            "Wybierz opcję:\n" +
+            "1 - Dodaj \n" +
+            "2 - Pokaż wszystkie \n" +
+            "3 - Usuń \n" +
+            "4 - Zaktualizuj \n"+
+            "5 - Wyjście";
+    private static final String titleMSG = "Wprowadź tytuł:";
+    private static final String authorMSG = "Wprowadź autora:";
+    private static final String isbnMSG = "Wprowadź numer ISBN:";
+    private static final String idMSG = "Wprowadź id:";
 
     public static void main(String[] args) {
         BookDAO bookDAO = new BookDAO();
@@ -24,47 +24,48 @@ public class LibraryDemo {
                 case 1:
                     Book book = new Book();
                     scanner.nextLine();
-                    System.out.println(titleReqMSG);
+                    System.out.println(titleMSG);
                     book.setTitle(scanner.nextLine());
-                    System.out.println(authorReqMSG);
+                    System.out.println(authorMSG);
                     book.setAuthor(scanner.nextLine());
-                    System.out.println(isbnReqMSG);
+                    System.out.println(isbnMSG);
                     book.setIsbn(scanner.nextLine());
                     bookDAO.addBook(book);
-                    System.out.println("Book added");
+                    System.out.println("Książka dodana");
                     break;
                 case 2:
                     List<Book> books = bookDAO.getAllBooks();
                     if(!books.isEmpty()) {
-                        System.out.println("Books:");
+                        System.out.println("Książki:");
                         books.forEach(e -> System.out.println(e.toString()));
                     }else {
-                        System.out.println("No books in database");
+                        System.out.println("Nie znaleziono żadnej książki");
                     }
                     break;
                 case 3:
                     scanner.nextLine();
-                    System.out.println(idReqMSG);
+                    System.out.println(idMSG);
                     bookDAO.deleteBook(scanner.nextLong());
+                    System.out.println("Książka usunięta");
                     break;
                 case 4:
                     Book bookUpdated = new Book();
                     scanner.nextLine();
-                    System.out.println(idReqMSG);
+                    System.out.println(idMSG);
                     long id = scanner.nextLong();
                     scanner.nextLine();
                     if(bookDAO.getBookById(id) != null) {
                         bookUpdated.setId(id);
-                        System.out.println(titleReqMSG);
+                        System.out.println(titleMSG);
                         bookUpdated.setTitle(scanner.nextLine());
-                        System.out.println(authorReqMSG);
+                        System.out.println(authorMSG);
                         bookUpdated.setAuthor(scanner.nextLine());
-                        System.out.println(isbnReqMSG);
+                        System.out.println(isbnMSG);
                         bookUpdated.setIsbn(scanner.nextLine());
                         bookDAO.updateBook(bookUpdated);
-                        System.out.println("Book updated");
+                        System.out.println("Książka zaktualizowana");
                     }else {
-                        System.out.println("Book doesn't exist");
+                        System.out.println("Nie znaleziono takiej książki");
                     }
                     break;
                 case 5:

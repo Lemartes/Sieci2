@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDAO {
-    private static final String URL = "jdbc:mysql://localhost:3306/library?useSSL=false";
-    private static final String USER = "root";
-    private static final String PASS = "admin";
+    private static final String URL = "jdbc:mysql://localhost:3306/Sieci2";
+    private static final String USER = "Cibor";
+    private static final String PASS = "Fresia123";
     private Connection connection;
 
     public BookDAO() {
@@ -27,7 +27,7 @@ public class BookDAO {
         }
     }
     public void addBook(Book book) {
-        final String query = "insert into books(title, author, isbn) values(?, ?, ?)";
+        final String query = "insert into books(Title, Author, ISBN) values(?, ?, ?)";
         try {
             PreparedStatement prepStmt = connection.prepareStatement(query);
             prepStmt.setString(1, book.getTitle());
