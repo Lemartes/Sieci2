@@ -53,7 +53,7 @@ public class Library {
                     scanner.nextLine();
                     System.out.println(isbnMSG);
                     String isbn = scanner.nextLine();
-                    scanner.nextLine();
+                    //scanner.nextLine();
                     if(bookDAO.getBookByIsbn(isbn) != null) {
                         bookUpdated.setId(bookDAO.getBookByIsbn(isbn).getId());
                         System.out.println(titleMSG);
