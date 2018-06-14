@@ -13,9 +13,9 @@ public class BookDAO {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USER, PASS);
         } catch (ClassNotFoundException e) {
-            System.out.println("No driver found");
+            System.out.println("brak nośnika");
         } catch (SQLException e) {
-            System.out.println("Could not establish connection");
+            System.out.println("problem z połączeniem");
         }
     }
 
@@ -40,11 +40,11 @@ public class BookDAO {
         }
     }
 
-    public void deleteBook(long id) {
-        final String query = "delete from books where id = ?";
+    public void deleteBook(String isbn) {
+        final String query = "delete from books where ISBN = ?";
         try {
             PreparedStatement prepStmt = connection.prepareStatement(query);
-            prepStmt.setLong(1, id);
+            prepStmt.setString(1, isbn);
             prepStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

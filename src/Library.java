@@ -44,18 +44,18 @@ public class Library {
                     break;
                 case 3:
                     scanner.nextLine();
-                    System.out.println(idMSG);
-                    bookDAO.deleteBook(scanner.nextLong());
+                    System.out.println(isbnMSG);
+                    bookDAO.deleteBook(scanner.nextLine());
                     System.out.println("Książka usunięta");
                     break;
                 case 4:
                     Book bookUpdated = new Book();
                     scanner.nextLine();
-                    System.out.println(idMSG);
-                    long id = scanner.nextLong();
+                    System.out.println(isbnMSG);
+                    String isbn = scanner.nextLine();
                     scanner.nextLine();
-                    if(bookDAO.getBookById(id) != null) {
-                        bookUpdated.setId(id);
+                    if(bookDAO.getBookByIsbn(isbn) != null) {
+                        bookUpdated.setId(bookDAO.getBookByIsbn(isbn).getId());
                         System.out.println(titleMSG);
                         bookUpdated.setTitle(scanner.nextLine());
                         System.out.println(authorMSG);
